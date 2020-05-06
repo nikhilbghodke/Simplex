@@ -1,0 +1,45 @@
+assign   =   keyword identifier  assignment   exp   semicolon
+if_else_statement   =   if_statement    else leftCircular rightCircular leftCurly   statement   rightCurly
+if_statement   =   if  leftCircular condition rightCircular leftCurly  statement   rightCurly
+while_statement   =   while leftCircular  condition   rightCircular   leftCurly   statement   rightCurly
+function_definition =   function    identifier  leftCircular    params    rightCircular   leftCurly   statement   rightCurly
+function_call   =   identifier leftCircular params rightCircular  semicolon
+params  =   identifier  comma   params
+params  =   exp comma   params
+params  =   epsilon
+statement   =   function_call   statement
+statement   =   function_definition statement
+statement   =   while_statement statement
+statement   =   assign  statement
+statement   =   if_else_statement statement
+statement   =   if_statement    statement
+statement   =   epsilon
+
+#conditonal
+condition   =   identifier  comparator  exp
+condition   =   identifier  comparator  identifier
+condition   =   exp comparator  exp
+condition   =   exp comparator  identifier
+
+comparator  =   equals
+comparator  =   greaterThanEqual
+comparator  =   lesserThanEqual
+comparator  =   lesserThan
+comparator  =   greaterThan
+
+# expressions
+exp =   X add exp
+exp =   X sub exp
+exp =   X
+X   =   S mul X
+X   =   S divide  X
+X   =   S modulo  X
+X   =   S
+S   =   add add T
+S   =   sub sub T
+S   =   add T
+S   =   sub T
+S   =   T
+T   =   number add add
+T   =   number sub sub
+T   =   number

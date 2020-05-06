@@ -1,0 +1,8 @@
+number  =   \d+
+word    =   \w+
+closeTag    =   </
+openTag =   <
+comment =   <!--.*?-->
+string  =   "[^\"]*"
+rigthBracket    =   >
+equals  =   =
