@@ -3,13 +3,23 @@ update  =   identifier  assignment   exp   semicolon
 if_else_statement   =   if  leftCircular condition rightCircular leftCurly  statement   rightCurly    else    leftCurly   statement   rightCurly
 if_statement   =   if  leftCircular condition rightCircular leftCurly  statement   rightCurly
 while_statement   =   while leftCircular  condition   rightCircular   leftCurly   statement   rightCurly
-function_definition =   function    identifier  leftCircular    optional_params    rightCircular   leftCurly   statement   rightCurly
-function_call   =   identifier leftCircular optional_params rightCircular  semicolon
-optional_params =   exp_4   params
+
+function_definition =   function    identifier  leftCircular    function_definition_optional_params    rightCircular   leftCurly   statement   rightCurly
+function_call   =   identifier leftCircular optional_params rightCircular
+function_definition_optional_params =   identifier functional_definition_params
+function_definition_optional_params =   epsilon
+functional_definition_params    =   comma   identifier  functional_definition_params
+functional_definition_params    =   epsilon
+optional_params =   exp   params
 optional_params =   epsilon
-params  =   comma   exp_4   params
+params  =   comma   exp   params
 params  =   epsilon
-statement   =   function_call   statement
+return_statement   =   return exp    semicolon
+return_statement   =   return semicolon
+
+
+statement   =   return_statement
+statement   =   function_call   semicolon   statement
 statement   =   function_definition statement
 statement   =   while_statement statement
 statement   =   update  statement
@@ -19,7 +29,7 @@ statement   =   if_statement    statement
 statement   =   epsilon
 
 #conditonal
-condition   =   exp_4  comparator  exp_4
+condition   =   exp  comparator  exp
 
 comparator  =   equals
 comparator  =   greaterThanEqual
@@ -43,5 +53,7 @@ exp_2   =   exp_3
 exp_3   =   exp_4 increment
 exp_3   =   exp_4 decrement
 exp_3   =   exp_4
+exp_4   =   function_call
 exp_4   =   number
 exp_4   =   identifier
+

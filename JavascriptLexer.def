@@ -1,4 +1,5 @@
-keyword =   var|for|return
+keyword =   var|for
+return  =   return
 if  =   if
 else    =   else
 while   =   while
