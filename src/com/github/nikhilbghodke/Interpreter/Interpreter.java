@@ -2,6 +2,7 @@ package com.github.nikhilbghodke.Interpreter;
 
 import com.github.nikhilbghodke.parser.AST_Node;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Interpreter {
@@ -57,6 +58,11 @@ public class Interpreter {
                     eval(child.children.get(5),new_env);
                     condition= eval_condition(child.children.get(2),env);
                 }
+            }
+            else if(child.name.equals("function_definition")){
+                List<Variable> list= eval_optional_params(child.children.get(3),env);
+                AST_Node fbody= child.children.get(6);
+                env.addFunction(child.children.get(1).value,new Function(fbody,list,env));
             }
             else if(child.name.equals("statement"))
                 eval(child,env);
@@ -171,5 +177,29 @@ public class Interpreter {
             return a>b;
         //unknown operator
         return true;
+    }
+    private List<Variable> eval_optional_params(AST_Node tree, Environment env) throws Exception {
+        if(tree.children.size()==1){
+          return new ArrayList<>();
+        }
+        else{
+            List<Variable> ans= eval_params(tree.children.get(1),env);
+            int a= eval_exp_4(tree.children.get(0),env);
+            ans.add(0,new Variable("number",a+""));
+            return ans;
+        }
+    }
+    private List<Variable> eval_params(AST_Node tree, Environment env) throws Exception {
+
+        if(tree.children.size()==1){
+            return new ArrayList<>();
+        }
+        else{
+            List<Variable> ans= eval_params(tree.children.get(2),env);
+            int a= eval_exp_4(tree.children.get(1),env);
+            ans.add(0,new Variable("number",a+""));
+            return ans;
+        }
+
     }
 }

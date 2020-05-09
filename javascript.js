@@ -1,4 +1,6 @@
-var i=0;
-while(i<=21){
-i=i+10;
+var i=10;
+function nikhil (1,i){
+if(i<10){
+i=i+1;
+}
 }
