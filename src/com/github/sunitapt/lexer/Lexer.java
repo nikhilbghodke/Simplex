@@ -1,4 +1,4 @@
-package com.github.nikhilbghodke.lexer;
+package com.github.sunitapt.lexer;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -36,6 +36,7 @@ public class Lexer {
         while(!temp.isEmpty()){
             temp=temp.trim();
 
+            //iterate over all rules in precedence
             for(String terminal:precedence){
                 Pattern regex=rules.get(terminal);
                 String name=terminal;
@@ -63,13 +64,17 @@ public class Lexer {
 
     public void loadRules(String grammarFile) throws Exception {
         String temp= readFileAsString(grammarFile);
+        //divide the content in lines
         String[] lines= temp.split("\\n");
+
+        //iterate  through all rules
         for(String s:lines){
             int index=s.indexOf('=');
             String key=s.substring(0,index).trim();
             String value=s.substring(index+1).trim();
             precedence.add(key);
             try {
+                //for eficiency compiling the regular expression
                 rules.put(key, Pattern.compile("^(" + value + ")"));
             }
             catch (Exception e){

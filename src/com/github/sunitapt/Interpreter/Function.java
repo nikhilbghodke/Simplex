@@ -1,6 +1,6 @@
-package com.github.nikhilbghodke.Interpreter;
+package com.github.sunitapt.Interpreter;
 
-import com.github.nikhilbghodke.parser.AST_Node;
+import com.github.sunitapt.parser.AST_Node;
 
 import java.util.List;
 

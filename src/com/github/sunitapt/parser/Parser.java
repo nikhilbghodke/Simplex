@@ -1,12 +1,10 @@
-package com.github.nikhilbghodke.parser;
+package com.github.sunitapt.parser;
 
-import com.github.nikhilbghodke.lexer.Lexer;
+import com.github.sunitapt.lexer.Lexer;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.concurrent.ExecutionException;
-import java.util.regex.Pattern;
 
 public class Parser {
     public Lexer lexer;

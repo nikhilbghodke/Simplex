@@ -1,4 +1,4 @@
-package com.github.nikhilbghodke.parser;
+package com.github.sunitapt.parser;
 
 import java.util.ArrayList;
 

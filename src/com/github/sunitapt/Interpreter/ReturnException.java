@@ -1,4 +1,4 @@
-package com.github.nikhilbghodke.Interpreter;
+package com.github.sunitapt.Interpreter;
 
 public class ReturnException extends Exception{
     int num;

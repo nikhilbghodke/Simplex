@@ -9,4 +9,4 @@ function fib(j){
     }
 return fib(j-2)+fib(j-1);
 }
-i=fib(i);
+i=fib(10);

@@ -1,6 +1,6 @@
-package com.github.nikhilbghodke.Interpreter;
+package com.github.sunitapt.Interpreter;
 
-import com.github.nikhilbghodke.parser.AST_Node;
+import com.github.sunitapt.parser.AST_Node;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class Interpreter {
     public void eval() throws Exception {
 
         eval(tree,global);
-
+        System.out.println(global.toString());
     }
     public void eval(AST_Node tree,Environment env) throws Exception {
         List<AST_Node> children= tree.children;

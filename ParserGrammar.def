@@ -17,7 +17,7 @@ params  =   epsilon
 return_statement   =   return exp    semicolon
 return_statement   =   return semicolon
 
-
+#root
 statement   =   return_statement
 statement   =   function_call   semicolon   statement
 statement   =   function_definition statement
@@ -37,7 +37,7 @@ comparator  =   lesserThanEqual
 comparator  =   lesserThan
 comparator  =   greaterThan
 
-# expressions
+# expressions un ambigous grammar for arthimetic expression
 exp =   exp_1 add exp
 exp =   exp_1 sub exp
 exp =   exp_1

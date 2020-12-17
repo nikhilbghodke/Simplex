@@ -1,4 +1,4 @@
-package com.github.nikhilbghodke.Interpreter;
+package com.github.sunitapt.Interpreter;
 
 import java.util.HashMap;
 
@@ -43,5 +43,8 @@ public class Environment {
         if(parent==null)
             throw new Exception("No such function "+name+" found");
         return parent.functionLookUp(name);
+    }
+    public String toString(){
+        return "Variable in Global Scope are "+variables.toString();
     }
 }
